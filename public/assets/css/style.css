@@ -57,12 +57,84 @@ button {
 
 .site-header {
     flex: 0;
+    padding: .25rem;
+    width: 100%;
+    border-bottom: #000 1px solid;
+    text-align: center;
+}
+
+.site-header button {
+    padding: .5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    color: #fff;
+    background-color: #000;
 }
 
 .mouse-pad {
     flex: 1;
+    margin: 0 auto;
+    padding: .5rem;
+    width: calc(100% - 1rem);
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: stretch;
+    font-size: .5rem;
+    /* background-color: red; */
+    /* text-align: center; */
+}
+
+.grid-row {
+    flex: 1 1 auto;
+    /* flex: 1, 1, auto; */
+    /* width: 100%; */
+    padding: 0;
+    margin: 0;
+    /* border: #000 1px solid; */
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    /* aspect-ratio: 1 / 1; */
+    /* height: auto; */
+}
+
+.grid-col {
+    /* flex: 0 0 100%; */
+    /* flex: 1, 1, auto; */
+    padding: 0;
+    margin: 0;
+    border: #000 1px solid;
+    /* text-align: center; */
+    aspect-ratio: 1 / 1;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* height: auto; */
+}
+
+.grid-col:before {
+    /* content: "";
+    padding-top: 100%; */
 }
 
 .site-footer {
+    border-top: #000 1px solid;
     flex: 0;
+    padding: 1rem;
+    font-size: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    width: 100%;
+}
+
+.foot-up {
+    font-size: 1rem;
+}
+
+.foot-nav {
+    font-size: 1rem;
 }

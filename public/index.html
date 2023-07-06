@@ -21,7 +21,7 @@
     <!-- Site JS (deferred)-->
     <script src="./assets/js/site.js" defer></script>
 </head>
-<body>
+<body id="top">
 
     <div class="main-container">
 
@@ -30,15 +30,27 @@
         </div>
     
         <header class="site-header">
-            Header
+            <button id="start-button" class="start-button">Start</button>
         </header>
     
         <main id="mouse-pad" class="mouse-pad">
-            Mouse Pad
+            <!-- Drawing Area -->
         </main>
     
         <footer class="site-footer">
-            Footer
+            <div class="foot-up">
+                <a href="#top"><i id="arrow" class="fa-regular fa-circle-up" title="Back to top"></i></a>
+            </div>
+            <div class="footer-message">
+                Developed for, but unaffiliated with, the <a href="https://www.theodinproject.com/" target="_blank">Odin Project</a>.
+            </div>
+            <div class="footer-copy">
+                <i class="fa-regular fa-copyright" title="Copyright"></i> 2023 Shawn Girard
+            </div>
+            <div class="foot-nav">            
+                <a href="https://github.com/spgirard" target="_blank"><i class="fa-brands fa-github" title="Git"></i></a>
+                <a href="https://www.linkedin.com/in/shawngirard/" target="_blank"><i class="fa-brands fa-linkedin" title="Linked In"></i></a>
+            </div>
         </footer>
     </div>
 
