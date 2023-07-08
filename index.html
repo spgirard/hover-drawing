@@ -21,35 +21,96 @@
     <!-- Site JS (deferred)-->
     <script src="./assets/js/site.js" defer></script>
 </head>
-<body id="top">
+<body id="top" onload="loadPageDefault()">
 
     <div class="main-container">
 
-        <div class="site-nav">
-            Nav
-        </div>
-    
         <header class="site-header">
-            <button id="start-button" class="start-button">Start</button>
+            <!-- site nav -->
+            <div class="site-nav">
+                <a href="https://github.com/spgirard" target="_blank"><i class="fa-brands fa-github" title="Git"></i></a>
+                <a href="https://www.linkedin.com/in/shawngirard/" target="_blank"><i class="fa-brands fa-linkedin" title="Linked In"></i></a>
+            </div>    
+            <!-- logo -->
+            <div class="brand">
+                <h1>
+                    <i class="fa-solid fa-computer-mouse"></i> Mouse Draw
+                </h1>
+            </div>        
         </header>
+
+        <!-- options -->
+        <div class="options-container">
+
+            <nav class="color-nav">
+                <ul class="color-options">
+                    <li class="black">
+                        <span id="black">
+                            <i class="fa-solid fa-paintbrush" title="Black Paint"></i>Darker
+                        </span>
+                    </li>
+                    <li class="white">
+                        <span id="white">
+                            <i class="fa-solid fa-paintbrush" title="White Paint"></i>Lighter
+                        </span>
+                    </li>
+                    <li class="warm">
+                        <span id="warm">
+                            <i class="fa-solid fa-paintbrush" title="Warm Paint"></i>Warm
+                        </span>
+                    </li>
+                    <li class="cool">
+                        <span id="cool">
+                            <i class="fa-solid fa-paintbrush" title="Paint"></i>Cool
+                        </span>
+                    </li>
+                    <li class="rnd">
+                        <span id="rnd">
+                            <i class="fa-solid fa-paintbrush" title="Random Paint"></i>???
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="reset">
+                <button id="reset">Reset</button>
+            </div>
+            <div id="size-area" class="current-size">
+                <!-- Grid Size -->
+            </div>
+
+            <nav class="grid-nav">
+                <ul class="grid-options">
+                    <li>
+                        <span id="larger">
+                            <i  class="fa-regular fa-square-plus"></i> Larger
+                        </span>
+                    </li>
+                    <li>
+                        <span id="smaller">
+                            <i class="fa-regular fa-square-minus"></i> Smaller
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+
+        </div> <!-- end options -->
     
+        <!-- site drawing area -->
         <main id="mouse-pad" class="mouse-pad">
             <!-- Drawing Area -->
         </main>
     
+        <!-- site footer -->
         <footer class="site-footer">
-            <div class="foot-up">
+            <!-- <div class="foot-up">
                 <a href="#top"><i id="arrow" class="fa-regular fa-circle-up" title="Back to top"></i></a>
-            </div>
+            </div> -->
             <div class="footer-message">
                 Developed for, but unaffiliated with, the <a href="https://www.theodinproject.com/" target="_blank">Odin Project</a>.
             </div>
             <div class="footer-copy">
                 <i class="fa-regular fa-copyright" title="Copyright"></i> 2023 Shawn Girard
-            </div>
-            <div class="foot-nav">            
-                <a href="https://github.com/spgirard" target="_blank"><i class="fa-brands fa-github" title="Git"></i></a>
-                <a href="https://www.linkedin.com/in/shawngirard/" target="_blank"><i class="fa-brands fa-linkedin" title="Linked In"></i></a>
             </div>
         </footer>
     </div>

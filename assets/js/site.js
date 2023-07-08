@@ -5,16 +5,90 @@ console.log("Welcome to Mouse Draw");
 // get main grid container
 const mousePad = document.getElementById("mouse-pad");
 
-// set up game button
-const startButton = document.getElementById("start-button");
-startButton.addEventListener("click", function(){
-    getGameParams();
+// set up default grid size and color scheme
+let currentGridSize = 12;
+let currentColorScheme = "darker";
+
+// set up size area
+const sizeArea = document.getElementById("size-area");
+
+// set up reset button
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", function(){
+    newGrid()
 });
 
+// set up size buttons
+const larger = document.getElementById("larger");
+larger.addEventListener("click", function() {
+    largerGrid();
+}) 
+const smaller = document.getElementById("smaller");
+smaller.addEventListener("click", function() {
+    smallerGrid();
+})
 
+// set up color paintbrushes
+const black = document.getElementById("black");
+black.addEventListener("click", function() {
+    console.log("black");
+    changeCurrentColorScheme("darken");
+})
+const white = document.getElementById("white");
+white.addEventListener("click", function() {
+    console.log("white");
+    changeCurrentColorScheme("lighten");
+})
+const warm = document.getElementById("warm");
+warm.addEventListener("click", function() {
+    console.log("warm");
+    changeCurrentColorScheme("warm");
+})
+const cool = document.getElementById("cool");
+cool.addEventListener("click", function() {
+    console.log("cool");
+    changeCurrentColorScheme("cool");
+})
+const rnd = document.getElementById("rnd");
+rnd.addEventListener("click", function() {
+    console.log("rnd");
+    changeCurrentColorScheme("rnd");
+})
 
 // FUNCTIONS
 
+function randomPaintChange() {
+    rnd.style.color = getRandomHexColor();
+}
+
+function loadPageDefault() {
+    // for body onload()
+    newGrid(12);
+    setInterval(randomPaintChange, 1000);
+    changeCurrentColorScheme("darken")
+}
+
+function largerGrid() {
+    console.log(currentGridSize);
+    if (currentGridSize < 100) {
+        currentGridSize ++;
+        newGrid(currentGridSize);
+    }
+}
+
+function smallerGrid() {
+    console.log(currentGridSize);
+    if (currentGridSize > 2) {
+        currentGridSize --;
+        newGrid(currentGridSize);
+    }
+}
+
+function newGrid() {
+    clearGrid();
+    createGrid(currentGridSize);
+}
+    
 function clearGrid(){
     // clears grid for new round
     while (mousePad.firstChild){
@@ -26,6 +100,7 @@ function createGrid(size){
     // create row divs with col divs inside
     let rowDiv;
     let colDiv;
+    sizeArea.textContent=`${size} x ${size}`;
     // let increment = 100/size;
     for(let i = 1; i <= size; i++){
         // create row
@@ -45,38 +120,45 @@ function createGrid(size){
         // append row
         mousePad.appendChild(rowDiv);
     }
+    captureCells()
 }
 
 function captureCells(){
     // set up cells for color change
-    // const rows = mousePad.querySelectorAll(".grid-row");
-    // console.log(rows.length);
     const cells = mousePad.querySelectorAll(".grid-col");
-    // console.log(cells.length);
     for (let i = 0; i < cells.length; i++) {
         cells[i].addEventListener("mouseenter", function(e){
-            console.log(e.target);
-            e.target.style.backgroundColor = getRandomHexColor();
+            e.target.style.backgroundColor = changeGridColor(currentColorScheme);
         })
     }
-
-    // cells.addEventListener("click", function(){
-    //     console.log("hovering");
-    // })
 }
 
-function getGameParams(){
-    let gridSize = parseInt(prompt("What size grid? (2-100)"));
-    if (gridSize < 2) {
-        gridSize = 2;
-    } else if (gridSize > 100) {
-        gridSize = 100;
-    } else if (isNaN(gridSize)) {
-        gridSize = 2
+// color functions
+
+function changeCurrentColorScheme(scheme) {
+    currentColorScheme = scheme;
+}
+
+function changeGridColor(colorScheme) {
+    let newColor;
+    switch (colorScheme) {
+        case "darken":
+            newColor = darkenColor();
+            break;
+        case "lighten":
+            newColor = lightenColor();
+            break;
+        case "warm":
+            newColor = warmColor();
+            break;
+        case "cool":
+            newColor = coolColor();
+            break;
+        case "rnd":
+            newColor = getRandomHexColor();
+            break;
     }
-    clearGrid();
-    createGrid(gridSize);
-    captureCells();
+    return newColor;
 }
 
 function random15(){
@@ -113,8 +195,6 @@ function getRandomHexColor() {
         }
         color += String(rnd);
     }
-    console.log(color);
     return color;
 }
 
-// console.log(getRandomHexColor());
