@@ -3,10 +3,14 @@
 /* GOOGLE FONTS */
 
 /* ROOT */
+/* I used https://coolors.co/ */
 
 :root {
-    --my-color: #123456;
-
+    --dk-gr: #2B2D42;
+    --lt-gr: #8D99AE;
+    --light: #EDF2F4;
+    --lt-rd: #EF233C;
+    --dk-rd: #D90429;
 }
 
 /* BASE STYLES */
@@ -21,7 +25,7 @@ html {
     padding: 0;
     margin: 0;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 
 body {
@@ -29,14 +33,28 @@ body {
     margin: 0;
     height: 100vh;
     width: 100%;
+    background-color: black;
 }s
 
 a {
     text-decoration: none;
+    color: var(--lt-rd);
+}
+
+a:hover {
+    color: var(--dk-rd);
+}
+
+a:visited {
+    color: var(--lt-rd);
 }
 
 button {
     border: 0;
+}
+
+ul {
+ list-style: none;
 }
 
 /* PAGE STYLES */
@@ -46,42 +64,143 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
     width: 100%;
     height: 100%;
 }
 
-.site-nav {
-    flex: 0;
-}
-
 .site-header {
     flex: 0;
-    padding: .25rem;
+    padding: 0;
+    margin: 0;
     width: 100%;
-    border-bottom: #000 1px solid;
-    text-align: center;
+    background-color: var(--dk-gr);
 }
 
-.site-header button {
+.site-nav {
     padding: .5rem;
+    margin: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.site-nav i {
+    font-size: 1rem;
+    color: var(--lt-gr);
+    margin: 0 .25rem;
+}
+
+.brand {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--lt-gr);
+}
+
+/* OPTIONS AREA  */
+
+.options-container {
+    flex: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    background-color: var(--lt-gr);
+}
+
+.color-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-options li{
+    display: inline;
+    padding: .5rem;
+}
+
+.black {
+    color: black;
+    text-shadow: white 1px 1px;
+}
+
+.white {
+    color: white;
+    text-shadow: black 1px 1px;
+}
+
+.warm {
+    color: #0BF;
+    text-shadow: black 1px 1px;
+}
+
+.cool {
+    color: #400;
+    text-shadow: wblack 1px 1px;
+}
+
+.rnd {
+    color: #74ee15;
+    text-shadow: black 1px 1px;
+}
+
+.reset {
+    flex: 0;
+}
+
+.reset button {
     width: 4rem;
     height: 4rem;
     border-radius: 100%;
-    color: #fff;
-    background-color: #000;
+    box-shadow: black 2px 2px;
+    color: var(--dk-gr);
+}
+
+.current-size {
+    flex: 0;
+    min-width: 8rem;
+    min-height: 4rem;
+    border-radius: .5rem;
+    background-color: var(--light);
+    color: var(--dk-gr);
+    padding: 1rem;
+    margin: 0 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.grid-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-options {
+
+}
+
+.grid-options li {
+    display: inline;
+    padding: 0;
+    margin: 0 1rem;
+    font-size: 2rem;
 }
 
 .mouse-pad {
     flex: 1;
-    margin: 0 auto;
-    padding: .5rem;
-    width: calc(100% - 1rem);
+    width: 100%;
+    margin: .25rem auto;
+    padding: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
     justify-content: stretch;
     font-size: .5rem;
+    background-color: var(--light);
     /* background-color: red; */
     /* text-align: center; */
 }
@@ -105,7 +224,7 @@ button {
     /* flex: 1, 1, auto; */
     padding: 0;
     margin: 0;
-    border: #000 1px solid;
+    border: var(--lt-gr) 1px solid;
     /* text-align: center; */
     aspect-ratio: 1 / 1;
     /* display: flex; */
@@ -120,21 +239,31 @@ button {
 }
 
 .site-footer {
-    border-top: #000 1px solid;
+    /* border-top: #000 1px solid; */
     flex: 0;
-    padding: 1rem;
-    font-size: .75rem;
-    display: flex;
+    padding: 0;
+    font-size: 1rem;
+    /* display: flex;
     flex-direction: column;
-    gap: .5rem;
     align-items: center;
+    justify-content: center; */
     width: 100%;
 }
 
-.foot-up {
+/* .foot-up {
     font-size: 1rem;
+} */
+
+.footer-message {
+    padding: .5rem;
+    width: 100%;
+    text-align: center;
+    background-color: var(--lt-gr);
 }
 
-.foot-nav {
-    font-size: 1rem;
+.footer-copy {
+    padding: .5rem;
+    width: 100%;
+    text-align: center;
+    background-color: var(--dk-gr);
 }
