@@ -55,6 +55,9 @@ rnd.addEventListener("click", function() {
     changeCurrentColorScheme("rnd");
 })
 
+// create warm array
+const warmArr = createWarmArray();
+
 // FUNCTIONS
 
 function randomPaintChange() {
@@ -65,7 +68,7 @@ function loadPageDefault() {
     // for body onload()
     newGrid(12);
     setInterval(randomPaintChange, 1000);
-    changeCurrentColorScheme("darken")
+    changeCurrentColorScheme("darken");
 }
 
 function largerGrid() {
@@ -127,13 +130,25 @@ function captureCells(){
     // set up cells for color change
     const cells = mousePad.querySelectorAll(".grid-col");
     for (let i = 0; i < cells.length; i++) {
-        cells[i].addEventListener("mouseenter", function(e){
+        cells[i].addEventListener("click", function(e){
             e.target.style.backgroundColor = changeGridColor(currentColorScheme);
         })
     }
 }
 
 // color functions
+
+function createWarmArray() {
+    // create an array of all warm HSL colors
+    let arr = [];
+    for (let i = 0; i<90; i++) {
+        arr.push(i);
+    }
+    for (let i = 271; i <= 360; i++) {
+        arr.push(i);
+    }
+    return arr;
+}
 
 function changeCurrentColorScheme(scheme) {
     currentColorScheme = scheme;
@@ -143,10 +158,12 @@ function changeGridColor(colorScheme) {
     let newColor;
     switch (colorScheme) {
         case "darken":
-            newColor = darkenColor();
+            // newColor = darkenColor();
+            newColor = "#000";
             break;
         case "lighten":
-            newColor = lightenColor();
+            // newColor = lightenColor();
+            newColor = "#fff";
             break;
         case "warm":
             newColor = warmColor();
@@ -158,12 +175,32 @@ function changeGridColor(colorScheme) {
             newColor = getRandomHexColor();
             break;
     }
+    console.log(newColor);
     return newColor;
 }
 
-function random15(){
-    // generate number between 0 & 15
-    return Math.floor(Math.random() * 16);
+function darkenColor() {
+    // could add darkening effect for current color
+}
+
+function lightenColor() {
+        // could add lightening effect for current color
+}
+
+function warmColor() {
+    let num = randomBetween(0, warmArr.length);
+    let hColor = warmArr[num];
+    let s = randomBetween(50,100);
+    let l = randomBetween(30,70);
+    return `hsl(${hColor},${s}%,${l}%)`;    
+}
+
+function coolColor() {
+    let hColor = randomBetween(91, 269);
+    let s = randomBetween(50,100);
+    let l = randomBetween(30,70);
+    console.log(hColor, s, l);
+    return `hsl(${hColor},${s}%,${l}%)`;
 }
 
 function getRandomHexColor() {
@@ -197,4 +234,21 @@ function getRandomHexColor() {
     }
     return color;
 }
+
+
+function randomBetween(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+  
+function random100(){
+    // generate number between 0 & 100
+    return Math.floor(Math.random() * 100);
+}
+
+function random15(){
+    // generate number between 0 & 15
+    return Math.floor(Math.random() * 16);
+}
+
+
 
